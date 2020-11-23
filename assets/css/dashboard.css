@@ -24,10 +24,10 @@
 
 /*------------------- Universal Styles ----------------------*/
 @font-face {
-    font-family: "Raleway";
-    src: url("../fonts/raleway/Raleway-Regular.ttf");
+    font-family: 'Raleway';
+    font-style: normal;
     font-weight: normal;
-    src: url("../fonts/Raleway/static/Raleway-Regular.ttf");
+    src: local('Raleway'), url('../fonts/raleway/Raleway-Regular.woff') format('woff');
 }
 
 * {
@@ -211,7 +211,7 @@ aside.side-bar>._container>._content>._nav>li.log-out {
 }
 
 header {
-    background: transparent;
+    background: var(--background-color);
     padding: 0 10px;
     position: sticky;
     top: 0;
@@ -269,6 +269,10 @@ header ._nav>._nav-list {
     justify-content: space-between;
 }
 
+header ._nav>._nav-list>._head{
+    display: none;
+}
+
 header ._nav>._nav-list>li {
     color: #000000;
     font-size: 20px;
@@ -323,7 +327,7 @@ main>.content {
     padding: 10px;
 }
 
-main>.content>._container{
+main>.content>._container {
     position: relative;
     padding: 0 15px;
 }
@@ -339,36 +343,192 @@ main>.content .card .amount span {
     font-size: 12px;
 }
 
-main .panel{
+main .panel {
     margin: 30px 0;
 }
 
-/*--------------------- Punts ------------------------*/
-.punts{
+
+/*----------------------- Edit Pages ----------------------*/
+#edit-profile, #edit-account{
     position: relative;
 }
-.punts>._content{
+#edit-profile>._container, #edit-account>._container{
+    display: block;
+    width: 95%;
+    max-width: 750px;
+    min-height: 80vh;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+#edit-profile>._container>._head, #edit-account>._container>._head{
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--neutral-color);
+}
+#edit-profile>._container>._head>span, #edit-account>._container>._head>span{
+    color: var(--primary-color);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#edit-profile>._container>._head>span::before, #edit-account>._container>._head>span::before{
+    margin-right: 5px;
+}
+
+#edit-profile form, #edit-account form{
+    padding: 0;
+    margin: 20px 0;
+    max-width: unset;
+}
+
+#edit-profile form .profile-image, #edit-account form .license-image{
+    text-align: center;
+    margin: 20px 0 30px;
+}
+
+#edit-profile form .profile-image label, #edit-account form .license-image label{
+    display: inline-block;
+    position: relative;
+}
+
+#edit-profile form .profile-image label{
+    width: 100px;
+    height: 100px;
+}
+
+#edit-account form .license-image label{
+    width: 150px;
+    height: 100px;
+}
+
+#edit-profile form .profile-image label img, #edit-account form .license-image label img{
+    width: 100%;
+    height: 100%;
+    border: 5px solid var(--universal-color);
+}
+
+#edit-profile form .profile-image label img{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+#edit-account form .license-image label img{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+#edit-profile form .profile-image label span, #edit-account form .license-image label span{
+    position: absolute;
+    color: var(--primary-color);
+    display: inline-block;
+    background: var(--universal-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 20px;
+}
+
+#edit-profile form .profile-image label span{
+    bottom: 3px;
+    right: 3px;
+}
+
+#edit-account form .license-image label span{
+    bottom: 10px;
+    right: -10px;
+}
+
+#edit-profile form>._container, #edit-account form>._container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+#edit-profile form .form-group, #edit-account form .form-group{
+    margin: 0;
+    background: var(--neutral-color);
+    border: none;
+}
+
+#edit-profile form .form-group input, #edit-profile form .form-group select, #edit-profile form .form-group textarea, #edit-account form .form-group input, #edit-account form .form-group select, #edit-account form .form-group textarea{
+    font-weight: 700;
+}
+
+#edit-profile form .form-group > label, #edit-account form .form-group > label{
+    display: inline-block;
+    font-size: 14px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* #edit-profile form>._container, #edit-account form>._container{
+    grid-template-columns: auto;
+} */
+
+#edit-profile form>._container > *:last-child:not(:nth-child(even)){
+    grid-column: auto / span 2;
+}
+
+#edit-profile form>._actions, #edit-account form>._actions{
+    margin: 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/*--------------------- Punts ------------------------*/
+.punts {
+    position: relative;
+}
+
+.punts>._head{
+    margin: 40px 0 20px;
+}
+
+.punts>._content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
-.punts ._card{
-    flex: 1;
-    min-width: 200px;
+
+.punts ._card {
     background: var(--neutral-color);
     padding: 20px;
+    overflow: hidden;
+    border-radius:form 10px;
+    -webkit-border-radius:form 10px;
+    -moz-border-radius:form 10px;
+    -ms-border-radius:form 10px;
+    -o-border-radius:form 10px;
 }
-.punts ._cards>._head{
+
+.punts ._card>._head {
     display: flex;
     width: 100%;
-    
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
-.punts>._content ._teams-logos{
+
+.punts ._card>._head ._teams-logos {
     display: inline-block;
 }
-.punts>._content ._teams-logos>span{
+
+.punts ._card>._head ._teams-logos>span {
     display: inline-block;
     padding: 5px;
     border: 1px solid #848484;
@@ -378,17 +538,116 @@ main .panel{
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
-.punts>._content ._teams-logos>span.bet{
+
+.punts ._card>._head ._teams-logos>span.bet {
     padding: 10px;
     border: none;
     z-index: 2;
     background: var(--background-color);
 }
-.punts>._content ._teams-logos>span::before{
+
+.punts ._card>._head ._teams-logos>span::before {
     margin: 0;
 }
-.punts>._content ._teams-logos>span:last-child{
+
+.punts ._card>._head ._teams-logos>span:last-child {
     margin-left: -10px;
+}
+
+.punts ._card>._head ._info {
+    text-align: right;
+}
+
+.punts ._card>._head ._info>._date {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.punts ._card>._head ._info>._odds {
+    display: inline-block;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--primary-color);
+    border: 1px solid;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.punts ._card>._content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.punts ._card>._content ._teams {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    color: #848484;
+    font-weight: 500;
+}
+
+.punts ._card>._content ._teams>._bet{
+    font-weight: 700;
+    color: #000000;
+}
+
+.punts ._card>._content ._teams::after {
+    content: "vs";
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.punts ._card>._content .odds {
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.punts ._card>._content .odds>._active{
+    position: relative;
+}
+
+.punts ._card>._content .odds>._active::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: var( --primary-color);
+    position: absolute;
+    top: 20%;
+    right: -350%;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+.punts ._card>._footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.punts ._card>._footer .league {
+    color: #a4a4a4;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 
@@ -415,9 +674,11 @@ main .panel{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
-.card ._content{
+
+.card ._content {
     margin-bottom: 30px;
 }
+
 .card .vector {
     position: absolute;
     right: 20px;
@@ -426,7 +687,7 @@ main .panel{
     width: 120px;
 }
 
-.card ._footer{
+.card ._footer {
     color: var(--secondary-color);
 }
 
@@ -447,7 +708,7 @@ main .panel{
     -o-border-radius: 10px;
 }
 
-.card-trailer > *{
+.card-trailer>* {
     flex: 1;
     min-width: 200px;
 }
@@ -527,8 +788,116 @@ main .panel{
 }
 
 
+/* Tags */
+.success-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    background: var(--success-color);
+    color: var(--universal-color);
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.danger-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    background: var(--danger-color);
+    color: var(--universal-color);
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border: none;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+
+/* Forms */
+form {
+    display: block;
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    max-width: 650px;
+}
+
+form .form-group {
+    display: block;
+    position: relative;
+    font-size: 18px;
+    padding: 10px;
+    margin: 30px 0;
+    border: 1px solid var(--neutral-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
+    -moz-transition: .5s ease;
+    -ms-transition: .5s ease;
+    -o-transition: .5s ease;
+}
+
+form .form-group input, form .form-group select, form .form-group textarea {
+    display: block;
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    background: transparent;
+}
+
+form .form-group>input+label {
+    background-color: var(--universal-color);
+    position: absolute;
+    color: #5a5a5a;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
+    -moz-transition: .5s ease;
+    -ms-transition: .5s ease;
+    -o-transition: .5s ease;
+}
+
+form .form-group>input:focus+label,
+form .form-group>input:valid+label {
+    font-size: 12px;
+    color: var(--primary-color);
+    top: 0;
+    padding: 5px;
+}
+
+
 /* Media Queries */
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 995px) and (min-width:871px){
+    header ._nav>._profile-btn {
+        width: auto;
+    }
+
+    header ._nav>._profile-btn>span {
+        display: none;
+    }
+}
+@media only screen and (max-width: 870px) {
     #dashboard {
         grid-template-rows: repeat(4, minmax(150px, auto));
         grid-template-areas:
@@ -539,7 +908,7 @@ main .panel{
             "header header header header";
     }
 
-    #dashboard > aside.side-bar{
+    #dashboard>aside.side-bar {
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -555,7 +924,7 @@ main .panel{
     /* aside.side-bar>._container{
     } */
 
-    aside.side-bar>._container>._content>._nav{
+    aside.side-bar>._container>._content>._nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -563,7 +932,7 @@ main .panel{
         padding: 0;
     }
 
-    aside.side-bar>._container>._content>._nav>li{
+    aside.side-bar>._container>._content>._nav>li {
         flex: 1;
         margin: 0;
         padding: 10px 0;
@@ -571,7 +940,7 @@ main .panel{
         text-align: center;
     }
 
-    aside.side-bar>._container>._content>._nav>li.active::after{
+    aside.side-bar>._container>._content>._nav>li.active::after {
         width: 100%;
         height: 5px;
         top: 0;
@@ -586,15 +955,15 @@ main .panel{
         -moz-border-radius: unset;
         -ms-border-radius: unset;
         -o-border-radius: unset;
-}
+    }
 
-    aside.side-bar>._container>._content>._nav>li>a>span{
+    aside.side-bar>._container>._content>._nav>li>a>span {
         display: none;
     }
 
     #dashboard>main {
-        padding: 0;
-        margin-bottom: 50px;
+        padding: 0 0 10px;
+        margin-bottom: 11vmin;
     }
 
     header {
@@ -632,7 +1001,7 @@ main .panel{
         -o-transition: .2s ease-in;
     }
 
-    header ._nav>._nav-list>._head{
+    header ._nav>._nav-list>._head {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -662,5 +1031,8 @@ main .panel{
 
     header ._nav>._profile-btn>span {
         display: none;
+    }
+    #edit-profile form>._container > *:last-child:not(:nth-child(even)){
+        grid-column: auto;
     }
 }

@@ -27,8 +27,10 @@
 
 /*------------------- Universal Styles ----------------------*/
 @font-face {
-    font-family: "Raleway";
-    src: url("../fonts/raleway/Raleway-Regular.ttf");
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Raleway'), url('../fonts/raleway/Raleway-Regular.woff') format('woff');
 }
 
 * {
@@ -393,7 +395,7 @@ section.content>._container>._content>._main>._container>.tabs>a:hover::after {
 }
 
 section.content>._container>._content>._main ._actions {
-    padding: 3px 22px;
+    padding: 3px 20px;
     border-radius: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -402,7 +404,7 @@ section.content>._container>._content>._main ._actions {
 }
 
 section.content>._container>._content>._aside {
-    min-width: 270px;
+    min-width: 40%;
     flex: 1;
 }
 
@@ -785,7 +787,7 @@ span.versus {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    padding: 20px;
+    padding: 20px 15px;
     margin: 10px 0 0;
     border: 1px solid var(--neutral-color);
     border-radius: 5px;
@@ -798,7 +800,7 @@ span.versus {
 .liveScores .teams {
     display: inline-flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .liveScores ._logos {
@@ -874,6 +876,166 @@ span.versus {
     font-size: 14px;
     font-weight: 100;
     color: #8a8a8a;
+}
+
+/*-------------------------- Table for Bet Slips-------------------------*/
+.bet-slip{
+    display: block;
+    margin: 0 -15px;
+    position: relative;
+}
+.bet-slip > ._tab{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.bet-slip ._row{
+    background: var(--neutral-color);
+    overflow: hidden;
+}
+
+.bet-slip>._tab>._row._games{
+    position: relative;
+}
+
+.bet-slip>._tab>._row._games>.remove{
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 1.5;
+    color: var(--universal-color);
+    background: var(--danger-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.bet-slip>._tab>._row._games>._content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 25px 10px!important;
+}
+
+.bet-slip ._row>._content ._teams{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.bet-slip ._row>._content .team-logos{
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+
+.bet-slip ._row>._content .team-logos>span{
+    display: inline-block;
+    padding: 7px;
+    border: 1px solid #7b7b7b;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.bet-slip ._row>._content .team-logos>span::before{
+    margin: auto;
+}
+
+.bet-slip ._row>._content .team-logos>span:last-child{
+    margin-left: -5px;
+}
+
+.bet-slip ._row>._content .team-names{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.bet-slip ._row>._content .team-names>span{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.bet-slip ._row>._content .team-names::after{
+    content: "vs";
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+.bet-slip ._row>._content>._odds{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.bet-slip ._row>._content>._odds>span._active{
+    position: relative;
+}
+
+.bet-slip ._row>._content>._odds>span._active::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: var( --primary-color);
+    position: absolute;
+    top: 20%;
+    right: -30px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+.bet-slip>._tab>._row._games>._footer{
+    padding: 0 25px 20px;
+}
+
+.bet-slip>._tab>._row._games>._footer>span{
+    display: inline-block;
+    padding: 5px;
+    font-size: 12px;
+    color: var(--primary-color);
+    border: 1px solid;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.bet-slip>._tab>._actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 10px;
+    gap: 10px;
+}
+.bet-slip>._tab>._actions>*:first-child{
+    flex: 1;
 }
 
 
@@ -968,6 +1130,21 @@ footer>._container ._notice {
     display: inline-block;
     background: var(--neutral-color);
     color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.danger-btn {
+    display: inline-block;
+    background: var(--danger-color);
+    color: var(--universal-color);
     font-weight: bold;
     text-transform: uppercase;
     padding: 10px 20px;
