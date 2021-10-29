@@ -87,6 +87,10 @@ aside.side-bar>._container>._head>._profile {
     text-align: center;
 }
 
+aside.side-bar>._container>._head>._profile>._profile-details{
+    cursor: default;
+}
+
 aside.side-bar>._container>._head>._profile>._profile-img {
     display: inline-block;
     margin: 20px auto;
@@ -1196,12 +1200,13 @@ form .form-group>input:valid+label {
     header ._nav>._nav-list {
         display: block;
         position: fixed;
-        top: -100%;
+        top: calc(-100% - 80px);
         left: 0%;
         background: var(--primary-color);
         width: 100%;
         height: 100vh;
         padding: 20px;
+        z-index: 9;
         transition: .2s ease-in;
         -webkit-transition: .2s ease-in;
         -moz-transition: .2s ease-in;
