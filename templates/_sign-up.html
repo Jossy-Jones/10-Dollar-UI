@@ -32,7 +32,7 @@
 
             <section class="sign-up">
                 <div class="_container">
-                    <form action="_index2.html" method="post">
+                    <form method="post">
                         <h2>Sign Up</h2>
                         <p>Please enter your details to register</p>
                         <div class="form-group">
@@ -100,5 +100,9 @@
 
 <!-- Scripts -->
 <script type="text/javascript" src="../assets/js/main.js"></script>
+<script>
+    let form = document.querySelector("form");
+    App.processForm(form, '_index2.html');
+</script>
 
 </html>

@@ -59,26 +59,49 @@ const App = (function app() {
 
     //@Todo Remove this code and create your custom form validation
     function formValidation(form) {
-        form.addEventListener("submit", e => {
-            e.preventDefault();
-            let valid = form.checkValidity();
-            if (valid) {
-                alertMessages("success", "submitted successfully!");
-            } else {
-                alertMessages("danger", "failed!");
-            }
-        })
+        if(form){
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+                let valid = form.checkValidity();
+                if (valid) {
+                    alertMessages("success", "submitted successfully!");
+                } else {
+                    alertMessages("danger", "failed!");
+                }
+            })
+        }else{
+            return false;
+        }
+    }
+
+    function processForm(form, destination=false) {
+        if(form){
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+                let valid = form.checkValidity();
+                if (valid) {
+                    alertMessages("success", "submitted successfully!");
+                    setTimeout(()=>{
+                        window.location.href = destination;
+                    }, 1500);
+                } else {
+                    alertMessages("danger", "failed!");
+                }
+            })   
+        }else{
+            return false;
+        }
     }
 
     function init() {
         stickyHeader();
-        formValidation();
         upgamesDropdown();
     }
-
+    
     let publicKeys = {
         alertMessages: alertMessages,
         init: init,
+        processForm: processForm,
     }
 
     return publicKeys
