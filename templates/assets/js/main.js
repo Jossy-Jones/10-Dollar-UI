@@ -15,10 +15,10 @@ const App = (function app() {
             window.addEventListener("scroll", function (e) {
                 if (window.scrollY > premier.scrollHeight) {
                     header.classList.add("fixed");
-                    document.querySelector(".logo img").setAttribute("src", "../assets/img/logo.png");
+                    document.querySelector(".logo img").setAttribute("src", "./assets/img/logo.png");
                 } else {
                     header.classList.remove("fixed");
-                    document.querySelector(".logo img").setAttribute("src", "../assets/img/logo-alt.png")
+                    document.querySelector(".logo img").setAttribute("src", "./assets/img/logo-alt.png")
                 };
             })
         }
